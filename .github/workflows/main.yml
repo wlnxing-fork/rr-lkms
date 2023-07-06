@@ -82,9 +82,9 @@ jobs:
           - version: 7.1
             platform: denverton
             parm: 'dev-v7 prod-v7 test-v7'
-          #- version: 7.1
-          #  platform: epyc7002
-          #  parm: 'dev-v7 prod-v7 test-v7'
+          - version: 7.1
+            platform: epyc7002
+            parm: 'dev-v7 prod-v7 test-v7'
           - version: 7.1 
             platform: geminilake
             parm: 'dev-v7 prod-v7 test-v7'
@@ -236,7 +236,11 @@ jobs:
               strip -g redpill.ko    # Discard symbols from object files. 
               RPKOVER=$(modinfo --field=vermagic redpill.ko | awk '{print $1}')
               gzip redpill.ko
-              mv -f ./redpill.ko.gz /source/output/rp-${{ matrix.platform }}-${RPKOVER/+/}-`echo ${a} | awk -F'-' '{print $1}'`.ko.gz
+              if [ "${{ matrix.platform }}" = "epyc7002" ]; then
+                mv -f ./redpill.ko.gz /source/output/rp-${{ matrix.platform }}-${{ matrix.version }}-${RPKOVER/+/}-`echo ${a} | awk -F'-' '{print $1}'`.ko.gz
+              else
+                mv -f ./redpill.ko.gz /source/output/rp-${{ matrix.platform }}-${RPKOVER/+/}-`echo ${a} | awk -F'-' '{print $1}'`.ko.gz
+              fi
             else
               echo "error"
             fi
