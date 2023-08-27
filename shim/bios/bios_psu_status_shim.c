@@ -15,24 +15,11 @@ static const struct hw_config *hw_config = NULL;
 static override_symbol_inst *HWMONGetPSUStatusByI2C_ovs = NULL;
 static override_symbol_inst *RS4021xspI2CGetPowerInfo_ovs = NULL;
 static override_symbol_inst *FS2500I2CGetPowerInfo_ovs = NULL;
+static override_symbol_inst *FS6400I2CGetPowerInfo_ovs = NULL;
+static override_symbol_inst *HD6500I2CGetPowerInfo_ovs = NULL;
 static override_symbol_inst *SA3600I2CGetPowerInfo_ovs = NULL;
 
 static int HWMONGetPSUStatusByI2C_shim(void)
-{
-    return 1;
-}
-
-static int RS4021xspI2CGetPowerInfo_shim(void)
-{
-    return 1;
-}
-
-static int FS2500I2CGetPowerInfo_shim(void)
-{
-    return 1;
-}
-
-static int SA3600I2CGetPowerInfo_shim(void)
 {
     return 1;
 }
@@ -47,14 +34,20 @@ int register_bios_psu_status_shim(const struct hw_config *hw)
         shim_reg_already();
     if (unlikely(FS2500I2CGetPowerInfo_ovs))
         shim_reg_already();
+    if (unlikely(FS6400I2CGetPowerInfo_ovs))
+        shim_reg_already();
+    if (unlikely(HD6500I2CGetPowerInfo_ovs))
+        shim_reg_already();
     if (unlikely(SA3600I2CGetPowerInfo_ovs))
         shim_reg_already();
-
+        
     hw_config = hw;
     override_symbol_or_exit_int(HWMONGetPSUStatusByI2C_ovs, "HWMONGetPSUStatusByI2C", HWMONGetPSUStatusByI2C_shim);
-    override_symbol_or_exit_int(RS4021xspI2CGetPowerInfo_ovs, "RS4021xspI2CGetPowerInfo_ovs", RS4021xspI2CGetPowerInfo_shim);
-    override_symbol_or_exit_int(FS2500I2CGetPowerInfo_ovs, "FS2500I2CGetPowerInfo_ovs", FS2500I2CGetPowerInfo_shim);    
-    override_symbol_or_exit_int(SA3600I2CGetPowerInfo_ovs, "SA3600I2CGetPowerInfo_ovs", SA3600I2CGetPowerInfo_shim);    
+    override_symbol_or_exit_int(RS4021xspI2CGetPowerInfo_ovs, "RS4021xspI2CGetPowerInfo_ovs", HWMONGetPSUStatusByI2C_shim);
+    override_symbol_or_exit_int(FS2500I2CGetPowerInfo_ovs, "FS2500I2CGetPowerInfo_ovs", HWMONGetPSUStatusByI2C_shim);
+    override_symbol_or_exit_int(FS6400I2CGetPowerInfo_ovs, "FS6400I2CGetPowerInfo_ovs", HWMONGetPSUStatusByI2C_shim);   
+    override_symbol_or_exit_int(HD6500I2CGetPowerInfo_ovs, "HD6500I2CGetPowerInfo_ovs", HWMONGetPSUStatusByI2C_shim);   
+    override_symbol_or_exit_int(SA3600I2CGetPowerInfo_ovs, "SA3600I2CGetPowerInfo_ovs", HWMONGetPSUStatusByI2C_shim);    
 
     shim_reg_ok();
     return 0;
