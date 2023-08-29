@@ -1,6 +1,6 @@
 #
 # Copyright (C) 2022 Ing <https://github.com/wjz304>
-# 
+#
 # This is free software, licensed under the MIT License.
 # See /LICENSE for more information.
 #
@@ -17,14 +17,14 @@
 
 name: Build lkms test
 
-on:  
+on:
   release:
     types: [published]
 
   workflow_dispatch:
     inputs:
       version:
-        description: 'format %y.%-m.$i or auto'
+        description: "format %y.%-m.$i or auto"
         required: false
         type: string
 
@@ -35,11 +35,11 @@ jobs:
         include:
           - version: 7.1
             platform: epyc7002
-            parm: 'dev-v7 prod-v7 test-v7'
-   
+            parm: "dev-v7 prod-v7 test-v7"
+
           - version: 7.2
             platform: epyc7002
-            parm: 'dev-v7 prod-v7 test-v7'
+            parm: "dev-v7 prod-v7 test-v7"
 
     runs-on: ubuntu-latest
 
@@ -51,8 +51,8 @@ jobs:
         run: |
           git config --global user.email "github-actions[bot]@users.noreply.github.com"
           git config --global user.name "github-actions[bot]"
-          sudo timedatectl set-timezone "Asia/Shanghai" 
-          
+          sudo timedatectl set-timezone "Asia/Shanghai"
+
       # - name: Cache EnvDeploy
       #   id: cache-env
       #   uses: actions/cache@v3
@@ -63,7 +63,7 @@ jobs:
       #       ${{ github.workspace }}/pkgscripts-ng
       #       ${{ github.workspace }}/build_env
       #     key: ds.${{ matrix.platform }}-${{ matrix.version }}
-          
+
       - name: Get EnvDeploy
         # if: ${{ steps.cache-env.outputs.cache-hit != 'true' }}
         run: |
@@ -104,7 +104,7 @@ jobs:
             [ -f "/env64.mak" ] && echo "CCVER=${CCVER}" >> /env64.mak
           fi
           EOF
-          
+
           [ -f ${ENV_PATH}/env64.mak ] && ENV_FILE=${ENV_PATH}/env64.mak || ([ -f ${ENV_PATH}/env32.mak ] && ENV_FILE=${ENV_PATH}/env32.mak)
           if [ -n "${ENV_FILE}" ]; then
             KVER=`grep 'KVER=' ${ENV_FILE} | awk -F'=' '{print $2}'`
@@ -167,5 +167,3 @@ jobs:
         # if: ${{ steps.cache-env.outputs.cache-hit == 'true' }}
         run: |
           sudo rm -rf ${{ github.workspace }}/build_env/ds.${{ matrix.platform }}-${{ matrix.version }}/source/*
-
-
