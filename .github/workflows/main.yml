@@ -204,28 +204,19 @@ jobs:
             [ -n "${CCVER}" ] && echo "CCVER=${CCVER}" >> $GITHUB_ENV
           fi
 
-      - name: Get Src
-        run: |
-          ROOT_PATH=${{ github.workspace }}
-
-          mkdir -p ${ROOT_PATH}/source/output
-          repo=${{ github.server_url }}/${{ github.repository }}
-
-          # 5.10.55 Temporary use of https://github.com/XPEnology-Community/redpill-lkm5
-          # And currently only 7.1 USB OK, @jim3ma is adapting to 7.2.
-          [ "${KVER:0:1}" = "5" ] && repo=https://github.com/XPEnology-Community/redpill-lkm5
-
-          git clone ${repo} ${ROOT_PATH}/source/input
-
-          sudo cp -a ${ROOT_PATH}/source ${ROOT_PATH}/build_env/ds.${{ matrix.platform }}-${{ matrix.version }}/
-
       - name: Make lkms
         run: |
-          ROOT_PATH=${{ github.workspace }}
-
           sudo chroot build_env/ds.${{ matrix.platform }}-${{ matrix.version }} << "EOF"
           sed -i 's/^CFLAGS=/#CFLAGS=/g; s/^CXXFLAGS=/#CXXFLAGS=/g' /env${BUILD_ARCH}.mak
           while read line; do if [ ${line:0:1} != "#" ]; then export ${line%%=*}="${line#*=}"; fi; done < /env${BUILD_ARCH}.mak
+          mkdir -p /source/output
+
+          repo=${{ github.server_url }}/${{ github.repository }}
+          # 5.10.55 Temporary use of https://github.com/XPEnology-Community/redpill-lkm5
+          # And currently only 7.1 USB OK, @jim3ma is adapting to 7.2.
+          [ "${KVER:0:1}" = "5" ] && repo=https://github.com/XPEnology-Community/redpill-lkm5.git
+
+          git clone -c http.sslVerify=false ${repo} /source/input
           cd /source/input
           [ -z "`grep 'env.mak' Makefile`" ] && sed -i '1 i include /env.mak' Makefile
           array=(${{ matrix.parm }})
@@ -249,6 +240,8 @@ jobs:
           ls -al /source/output
           EOF
 
+          ROOT_PATH=${{ github.workspace }}
+          mkdir -p ${ROOT_PATH}/source
           sudo cp -a ${ROOT_PATH}/build_env/ds.${{ matrix.platform }}-${{ matrix.version }}/source/output ${ROOT_PATH}/source/
 
       - name: Upload to Artifacts
