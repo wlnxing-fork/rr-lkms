@@ -59,6 +59,10 @@ jobs:
           - version: 6.2
             platform: geminilake
             parm: "dev-v6 prod-v6 test-v6"
+          ## checkout 6.2.4
+          #- version: 6.2
+          #  platform: grantley
+          #  parm: "dev-v6 prod-v6 test-v6"
           # checkout 6.2.4
           - version: 6.2
             platform: purley
@@ -81,6 +85,9 @@ jobs:
             platform: broadwellnk
             parm: "dev-v7 prod-v7 test-v7"
           - version: 7.1
+            platform: broadwellnkv2
+            parm: "dev-v7 prod-v7 test-v7"
+          - version: 7.1
             platform: bromolow
             parm: "dev-v7 prod-v7 test-v7"
           - version: 7.1
@@ -92,6 +99,9 @@ jobs:
           - version: 7.1
             platform: geminilake
             parm: "dev-v7 prod-v7 test-v7"
+          #- version: 7.1
+          #  platform: grantley
+          #  parm: "dev-v7 prod-v7 test-v7"
           - version: 7.1
             platform: purley
             parm: "dev-v7 prod-v7 test-v7"
@@ -114,6 +124,9 @@ jobs:
           - version: 7.2
             platform: broadwellnk
             parm: "dev-v7 prod-v7 test-v7"
+          - version: 7.2
+            platform: broadwellnkv2
+            parm: "dev-v7 prod-v7 test-v7"
           #- version: 7.2
           #  platform: bromolow
           #  parm: 'dev-v7 prod-v7 test-v7'
@@ -126,6 +139,9 @@ jobs:
           - version: 7.2
             platform: geminilake
             parm: "dev-v7 prod-v7 test-v7"
+          #- version: 7.2
+          #  platform: grantley
+          #  parm: "dev-v7 prod-v7 test-v7"
           - version: 7.2
             platform: purley
             parm: "dev-v7 prod-v7 test-v7"
