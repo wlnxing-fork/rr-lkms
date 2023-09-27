@@ -76,6 +76,11 @@ jobs:
           sudo ./EnvDeploy -v ${{ matrix.version }}`[ "${{ matrix.version }}" = "6.2" ] && echo ".4"` -l  # Get Available platforms
           sudo ./EnvDeploy -q -v ${{ matrix.version }} -p ${{ matrix.platform }}
 
+          # Fault tolerance of pkgscripts-ng
+          if [ "${{ matrix.platform }}" == "broadwellntbap" -a "${{ matrix.version }}" == "7.1" ]; then
+            sed -i '/		broadwellnk	BROADWELLNK/a\		broadwellntbap  BROADWELLNTBAP                  linux-4.4.x             Intel Broadwell with ntb kernel config in AP mode' ${ROOT_PATH}/pkgscripts-ng/include/platforms
+          fi
+
           #ENV
           mkdir -p ${ROOT_PATH}/source
 
