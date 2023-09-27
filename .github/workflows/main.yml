@@ -50,6 +50,9 @@ jobs:
             platform: broadwellnk
             parm: "dev-v6 prod-v6 test-v6"
           - version: 6.2
+            platform: broadwellntbap
+            parm: "dev-v6 prod-v6 test-v6"
+          - version: 6.2
             platform: bromolow
             parm: "dev-v6 prod-v6 test-v6"
           - version: 6.2
@@ -86,6 +89,9 @@ jobs:
             parm: "dev-v7 prod-v7 test-v7"
           - version: 7.1
             platform: broadwellnkv2
+            parm: "dev-v7 prod-v7 test-v7"
+          - version: 7.1
+            platform: broadwellntbap
             parm: "dev-v7 prod-v7 test-v7"
           - version: 7.1
             platform: bromolow
@@ -126,6 +132,9 @@ jobs:
             parm: "dev-v7 prod-v7 test-v7"
           - version: 7.2
             platform: broadwellnkv2
+            parm: "dev-v7 prod-v7 test-v7"
+          - version: 7.2
+            platform: broadwellntbap
             parm: "dev-v7 prod-v7 test-v7"
           #- version: 7.2
           #  platform: bromolow
