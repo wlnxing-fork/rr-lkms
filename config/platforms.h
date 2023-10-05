@@ -235,7 +235,7 @@ const struct hw_config supported_platforms[] = {
     {
         .name = "DS1520+",
         .pci_stubs = {
-            { .type = VPD_MARVELL_88SE9235, .bus = 0x01, .dev = 0x00, .fn = 0x00, .multifunction = false },
+            { .type = VPD_MARVELL_88SE9235,    .bus = 0x01, .dev = 0x00, .fn = 0x00, .multifunction = false },
             { .type = __VPD_TERMINATOR__ }
         },
         .emulate_rtc = true,
@@ -298,8 +298,8 @@ const struct hw_config supported_platforms[] = {
     {
         .name = "DS1621xs+",
         .pci_stubs = {
-            { .type = VPD_MARVELL_88SE9235, .bus = 0x09, .dev = 0x00, .fn = 0x00, .multifunction = false },
-            { .type = VPD_MARVELL_88SE9235, .bus = 0x0c, .dev = 0x00, .fn = 0x00, .multifunction = false },
+            { .type = VPD_MARVELL_88SE9235,    .bus = 0x09, .dev = 0x00, .fn = 0x00, .multifunction = false },
+            { .type = VPD_MARVELL_88SE9235,    .bus = 0x0c, .dev = 0x00, .fn = 0x00, .multifunction = false },
             { .type = __VPD_TERMINATOR__ }
         },
         .emulate_rtc = false,
@@ -363,7 +363,7 @@ const struct hw_config supported_platforms[] = {
     {
         .name = "DS423+",
         .pci_stubs = {
-            { .type = VPD_MARVELL_88SE9235, .bus = 0x01, .dev = 0x00, .fn = 0x00, .multifunction = false },
+            { .type = VPD_MARVELL_88SE9235,    .bus = 0x01, .dev = 0x00, .fn = 0x00, .multifunction = false },
             { .type = __VPD_TERMINATOR__ }
         },
         .emulate_rtc = true,
@@ -468,7 +468,7 @@ const struct hw_config supported_platforms[] = {
     {
         .name = "DS224+",
         .pci_stubs = {
-            { .type = VPD_MARVELL_88SE9235, .bus = 0x01, .dev = 0x00, .fn = 0x00, .multifunction = false },
+            { .type = VPD_MARVELL_88SE9235,    .bus = 0x01, .dev = 0x00, .fn = 0x00, .multifunction = false },
             { .type = __VPD_TERMINATOR__ }
         },
         .emulate_rtc = true,
@@ -514,9 +514,9 @@ const struct hw_config supported_platforms[] = {
     {
         .name = "DS3617xs",
         .pci_stubs = {
-            { .type = VPD_MARVELL_88SE9215, .bus = 0x01, .dev = 0x00, .fn = 0x00, .multifunction = false },
-            { .type = VPD_MARVELL_88SE9215, .bus = 0x02, .dev = 0x00, .fn = 0x00, .multifunction = false },
-            { .type = VPD_MARVELL_88SE9235, .bus = 0x08, .dev = 0x00, .fn = 0x00, .multifunction = false },
+            { .type = VPD_MARVELL_88SE9215,    .bus = 0x01, .dev = 0x00, .fn = 0x00, .multifunction = false },
+            { .type = VPD_MARVELL_88SE9215,    .bus = 0x02, .dev = 0x00, .fn = 0x00, .multifunction = false },
+            { .type = VPD_MARVELL_88SE9235,    .bus = 0x08, .dev = 0x00, .fn = 0x00, .multifunction = false },
             { .type = __VPD_TERMINATOR__ }
         },
         .emulate_rtc = false,
@@ -538,8 +538,8 @@ const struct hw_config supported_platforms[] = {
     {
         .name = "DS3622xs+",
         .pci_stubs = {
-            { .type = VPD_MARVELL_88SE9235, .bus = 0x09, .dev = 0x00, .fn = 0x00, .multifunction = false },
-            { .type = VPD_MARVELL_88SE9235, .bus = 0x0c, .dev = 0x00, .fn = 0x00, .multifunction = false },
+            { .type = VPD_MARVELL_88SE9235,    .bus = 0x09, .dev = 0x00, .fn = 0x00, .multifunction = false },
+            { .type = VPD_MARVELL_88SE9235,    .bus = 0x0c, .dev = 0x00, .fn = 0x00, .multifunction = false },
             { .type = __VPD_TERMINATOR__ }
         },
         .emulate_rtc = false,
@@ -645,7 +645,7 @@ const struct hw_config supported_platforms[] = {
     {
         .name = "FS3017",
         .pci_stubs = {
-            { .type = VPD_INTEL_CPU_I2C,    .bus = 0x00, .dev = 0x16, .fn = 0x00, .multifunction = false },
+            { .type = VPD_INTEL_CPU_I2C,       .bus = 0x00, .dev = 0x16, .fn = 0x00, .multifunction = false },
             { .type = __VPD_TERMINATOR__ }
         },
         .emulate_rtc = false,
@@ -667,7 +667,6 @@ const struct hw_config supported_platforms[] = {
     {
         .name = "FS6400",
         .pci_stubs = {
-            { .type = VPD_INTEL_CPU_I2C,    .bus = 0x00, .dev = 0x16, .fn = 0x00, .multifunction = false },
             { .type = __VPD_TERMINATOR__ }
         },
         .emulate_rtc = false,
@@ -689,7 +688,7 @@ const struct hw_config supported_platforms[] = {
     {
         .name = "HD6500",
         .pci_stubs = {
-            { .type = VPD_INTEL_CPU_I2C,    .bus = 0x00, .dev = 0x16, .fn = 0x00, .multifunction = false },
+            { .type = VPD_INTEL_CPU_I2C,       .bus = 0x00, .dev = 0x16, .fn = 0x00, .multifunction = false },
             { .type = __VPD_TERMINATOR__ }
         },
         .emulate_rtc = false,
@@ -711,10 +710,10 @@ const struct hw_config supported_platforms[] = {
     {
         .name = "RS3413xs+",
         .pci_stubs = {
-            { .type = VPD_MARVELL_88SE9235, .bus = 0x07, .dev = 0x00, .fn = 0x00, .multifunction = false },
-            { .type = VPD_MARVELL_88SE9235, .bus = 0x08, .dev = 0x00, .fn = 0x00, .multifunction = false },
-            { .type = VPD_MARVELL_88SE9235, .bus = 0x09, .dev = 0x00, .fn = 0x00, .multifunction = false },
-            { .type = VPD_MARVELL_88SE9235, .bus = 0x0a, .dev = 0x00, .fn = 0x00, .multifunction = false },
+            { .type = VPD_MARVELL_88SE9235,    .bus = 0x07, .dev = 0x00, .fn = 0x00, .multifunction = false },
+            { .type = VPD_MARVELL_88SE9235,    .bus = 0x08, .dev = 0x00, .fn = 0x00, .multifunction = false },
+            { .type = VPD_MARVELL_88SE9235,    .bus = 0x09, .dev = 0x00, .fn = 0x00, .multifunction = false },
+            { .type = VPD_MARVELL_88SE9235,    .bus = 0x0a, .dev = 0x00, .fn = 0x00, .multifunction = false },
             { .type = __VPD_TERMINATOR__ }
         },
         .emulate_rtc = false,
@@ -736,9 +735,9 @@ const struct hw_config supported_platforms[] = {
     {
         .name = "RS3618xs",
         .pci_stubs = {
-            { .type = VPD_MARVELL_88SE9215, .bus = 0x01, .dev = 0x00, .fn = 0x00, .multifunction = false },
-            { .type = VPD_MARVELL_88SE9215, .bus = 0x02, .dev = 0x00, .fn = 0x00, .multifunction = false },
-            { .type = VPD_MARVELL_88SE9235, .bus = 0x08, .dev = 0x00, .fn = 0x00, .multifunction = false },
+            { .type = VPD_MARVELL_88SE9215,    .bus = 0x01, .dev = 0x00, .fn = 0x00, .multifunction = false },
+            { .type = VPD_MARVELL_88SE9215,    .bus = 0x02, .dev = 0x00, .fn = 0x00, .multifunction = false },
+            { .type = VPD_MARVELL_88SE9235,    .bus = 0x08, .dev = 0x00, .fn = 0x00, .multifunction = false },
             { .type = __VPD_TERMINATOR__ }
         },
         .emulate_rtc = false,
